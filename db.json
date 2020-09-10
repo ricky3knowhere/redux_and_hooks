@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "ricky03knowhere",
+      "password": "123"
+    },
+    {
+      "email": "egon23@gmail.com",
+      "password": "$2a$10$S2S7rGf6yQpqg3V7bOn1fuOsRtGxI4JPlTDtJySALteJbIEDEdBQG",
+      "id": 2
+    }
+  ]
+}

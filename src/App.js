@@ -1,25 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Provider } from 'react-redux'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import './themes.css'
+// import Sidebar from './components/Sidebar'
+// import Main from './components/Main'
+// import { DarkManager } from './components/DarkManager'
+// import { CounterManager } from './components/CounterManager'
+import store from './store'
+import Login from './pages/Login'
+import Register from './pages/Register'
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={ store } >
+      {/* <DarkManager>
+          <CounterManager>
+          <Sidebar />
+          <Main />
+          </CounterManager>
+      </DarkManager> */}
+
+      <BrowserRouter>
+        <Switch>
+          <Route path="/home">Home</Route>
+          <Route exact path="/"><Login /></Route>
+          <Route exact path="/register"><Register /></Route>
+
+        </Switch>
+      </BrowserRouter>
+
+    </Provider>
   );
 }
 

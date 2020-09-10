@@ -1,0 +1,9 @@
+html,body {
+  margin: 0;
+  padding: 0;
+}
+
+.dark * {
+  color: #e7d3d3;
+  background: #3b3a3a;
+}
