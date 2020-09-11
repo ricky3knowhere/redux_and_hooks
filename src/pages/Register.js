@@ -4,9 +4,6 @@ import axios from 'axios'
 function Register(){
 
   const [data, setData] = useState({email: '', password: ''});
-  // useEffect(() => {
-  //   axios.get('http://localhost:4000/users')
-  // }, [])
 
   function getEmail(e){
     setData((data) => {

@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
+
 import axios from 'axios'
+import { useHistory } from 'react-router-dom';
 
 function Login(){
 
   const [data, setData] = useState({email: '', password: ''});
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const history = useHistory()
+
   useEffect(() => {
-    axios.get('http://localhost:4000/users',)
+    axios.get('http://localhost:3000/users',)
   }, [])
 
   function getEmail(e){
@@ -22,13 +29,34 @@ function Login(){
     })
   }
 
-  function login(){
-    axios.post('http://localhost:4000/login', data)
+  useEffect(() => {
+    if(error === true){
+      setTimeout(() => {
+        setError(false)
+        setErrorMessage('')
+      }, 2000)
+    }
+  })
+
+
+  async function login(){
+    try {
+      const response = await axios.post('http://localhost:3000/login', data)
+
+      if(response.status === 200){
+        history.push('/home')
+      }
+    } catch(e) {
+    console.log(e.response.data);
+    setErrorMessage(e.response.data)
+    setError(true)
   }
+}
   return (
     <div>
       <h2>Form Login</h2>
       <form>
+        { error && errorMessage}
         Email : <input name="email" onChange={getEmail} /><br /><br />
         password : <input name="password" onChange={getPassword} /><br /><br />
         <button type="button" onClick={login}>Login</button>
